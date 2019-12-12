@@ -12,6 +12,7 @@ namespace DelegateEx03
 
         public delegate void ClickDelegate(object sender);
 
+        //delegate 속성
         public ClickDelegate MyClick { get; set; }
 
         public void MyAreaClicked()

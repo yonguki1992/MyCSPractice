@@ -51,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelegateEx03", "DelegateEx0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelegateEx04", "DelegateEx04\DelegateEx04.csproj", "{0C340792-EC3D-4517-AE57-65536A1E9576}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnonymousMethodEx", "AnonymousMethodEx\AnonymousMethodEx.csproj", "{A80424D0-E973-4B21-9933-353BCDDD0850}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +155,10 @@ Global
 		{0C340792-EC3D-4517-AE57-65536A1E9576}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C340792-EC3D-4517-AE57-65536A1E9576}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C340792-EC3D-4517-AE57-65536A1E9576}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A80424D0-E973-4B21-9933-353BCDDD0850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A80424D0-E973-4B21-9933-353BCDDD0850}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A80424D0-E973-4B21-9933-353BCDDD0850}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A80424D0-E973-4B21-9933-353BCDDD0850}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
