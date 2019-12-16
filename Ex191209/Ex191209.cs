@@ -33,8 +33,8 @@ namespace Ex191209
 
             // 정렬함.
             Array.Sort(citations);
-            //Array.ForEach(citations, new Action<int>(ShowSquares));
-            //Console.WriteLine();
+            Array.ForEach(citations, new Action<int>(ShowSquares));
+            Console.WriteLine();
             //[0, 1, 3, 5, 6]
             for (int i = 0; i < citations.Length; ++i)
             {

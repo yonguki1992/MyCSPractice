@@ -51,6 +51,4 @@ namespace GenericEx
         where U : struct
     {
     }
-
-
 }
