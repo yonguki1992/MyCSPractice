@@ -1,15 +1,21 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
+// 로그 남길때 필요한 어트리뷰트
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 namespace CSVar
 {
     class CSVar
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(CSVar));
+
         //필드 (클래스 내에서 공통으로 사용되는 전역 변수)
-        int globalVar;
+        private readonly int globalVar = 10;
         //상수 : 컴파일 시 값이 결정 되며 불변
         const int MAX_VALUE = 1024;
         // readonly 필드 :: (개념적으로 상수와 비슷) 필드 선언부나 클래스 생성자에서 값을 지정할 수 있음
@@ -25,6 +31,7 @@ namespace CSVar
             int localVar;
 
             localVar = 100;
+            log.Debug(localVar);
 
             Console.WriteLine("globalVar : "+ globalVar);
             Console.WriteLine("localVar : "+localVar);
@@ -45,6 +52,8 @@ namespace CSVar
             //테스트
             CSVar cSVar = new CSVar();
             cSVar.Method1();
+
+
         }
     }
 }

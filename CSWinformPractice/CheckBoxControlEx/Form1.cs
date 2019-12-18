@@ -16,7 +16,7 @@ namespace CheckBoxControlEx
 {
     public partial class Form1 : Form
     {
-        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog log = LogManager.GetLogger(typeof(Form1));
         public Form1()
         {
             InitializeComponent();
