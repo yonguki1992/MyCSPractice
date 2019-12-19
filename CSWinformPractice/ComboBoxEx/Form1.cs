@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-[assembly:log4net.Config.XmlConfigurator(Watch = true)]
+[assembly:log4net.Config.XmlConfigurator(ConfigFile ="log4net.config",Watch = true)]
 namespace ComboBoxEx
 {
     public partial class Form1 : Form
