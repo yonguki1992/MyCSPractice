@@ -438,7 +438,6 @@ namespace DataGridViewEx02 {
                 this.columnClass.AllowDBNull = false;
                 this.columnClass.MaxLength = 10;
                 this.columnScore.AllowDBNull = false;
-                this.columnLastUpdate.AllowDBNull = false;
                 this.columnId.ReadOnly = true;
             }
             
@@ -606,7 +605,12 @@ namespace DataGridViewEx02 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public System.DateTime LastUpdate {
                 get {
-                    return ((global::System.DateTime)(this[this.tableScores.LastUpdateColumn]));
+                    try {
+                        return ((global::System.DateTime)(this[this.tableScores.LastUpdateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("\'Scores\' 테이블의 \'LastUpdate\' 열의 값이 DBNull입니다.", e);
+                    }
                 }
                 set {
                     this[this.tableScores.LastUpdateColumn] = value;
@@ -627,6 +631,18 @@ namespace DataGridViewEx02 {
                 set {
                     this[this.tableScores.IdColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsLastUpdateNull() {
+                return this.IsNull(this.tableScores.LastUpdateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetLastUpdateNull() {
+                this[this.tableScores.LastUpdateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -953,7 +969,7 @@ SELECT Id, Class, Score, LastUpdate FROM Scores WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Class, int Score, System.DateTime LastUpdate) {
+        public virtual int Insert(string Class, int Score, global::System.Nullable<global::System.DateTime> LastUpdate) {
             if ((Class == null)) {
                 throw new global::System.ArgumentNullException("Class");
             }
@@ -961,7 +977,12 @@ SELECT Id, Class, Score, LastUpdate FROM Scores WHERE (Id = @Id)";
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Class));
             }
             this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Score));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(LastUpdate));
+            if ((LastUpdate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(LastUpdate.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

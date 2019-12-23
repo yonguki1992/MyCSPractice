@@ -6,6 +6,9 @@
     {
         partial class ScoresDataTable
         {
+
         }
     }
 }
+
+
