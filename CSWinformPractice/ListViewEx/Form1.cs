@@ -62,6 +62,7 @@ namespace ListViewEx
 
             //리스트뷰를 refresh 하여 보여줌
             listView1.EndUpdate();
+            radioDetail.Checked = true;
         }
 
         private void radio_CheckedChanged(object sender, EventArgs e)
@@ -71,31 +72,26 @@ namespace ListViewEx
             {
                 log.Debug("자세히");
                 listView1.View = View.Details;
-
             }
             else if (radioList.Checked && radio == radioList)
             {
                 log.Debug("목록보기");
                 listView1.View = View.List;
-
             }
             else if (radioTitle.Checked && radio == radioTitle)
             {
                 log.Debug("제목만");
                 listView1.View = View.Tile;
-
             }
             else if (radioSmallIcon.Checked && radio == radioSmallIcon)
             {
                 log.Debug("작은아이콘");
                 listView1.View = View.SmallIcon;
-
             }
             else if (radioLargeIcon.Checked && radio == radioLargeIcon)
             {
                 log.Debug("큰아이콘");
                 listView1.View = View.LargeIcon;
-
             }
 
         }
