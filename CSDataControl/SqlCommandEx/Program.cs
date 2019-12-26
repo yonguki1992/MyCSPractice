@@ -106,6 +106,7 @@ namespace SqlCommandEx
             log.Debug("SelectCount 호출");
             int count = 0;
 
+            //jdbc의 Statement와 비슷하다.
             SqlCommand cmd = new SqlCommand(SELECT_COUNT, conn);
             count = (int)cmd.ExecuteScalar();
 
@@ -128,13 +129,13 @@ namespace SqlCommandEx
             {
                 Value = vo.Score
             };
-
-
+            
             cmd.Parameters.Add(classParam);
             cmd.Parameters.Add(scoreParam);
-        
-            // 실행
+            
+            // 완성된 명령어로 준비
             cmd.Prepare();
+            // 실행
             //===========================================================================
             // 특정 쿼리문 (ex: insert update delete 등등)
             cmd.ExecuteNonQuery();
@@ -189,14 +190,22 @@ namespace SqlCommandEx
             Console.WriteLine("==============================================================");
             // 데이터는 서버에서 가져오도록 실행
             // jdbc의 ResultSet 과 비슷함
+            // 한줄씩 이동해야하며, 사용이 끝나면 close 해줘야 하는 것 까지 모두 같음
             using (SqlDataReader dataReader = cmd.ExecuteReader())
             {
                 while (dataReader.Read())
                 {
-                    int id = dataReader.GetInt32(0);
-                    string clas = dataReader.GetString(1);
-                    int score = dataReader.GetInt32(2);
-                    DateTime lastUpdate = dataReader.GetDateTime(3);
+                    //Getter 를 사용
+                    //int id = dataReader.GetInt32(0);
+                    //string clas = dataReader.GetString(1);
+                    //int score = dataReader.GetInt32(2);
+                    //DateTime lastUpdate = dataReader.GetDateTime(3);
+
+                    // 인덱서를 사용(컬럼명 대신 숫자를 써도 됨)
+                    int id = (int)dataReader["Id"];
+                    string clas = dataReader["Class"] as string;
+                    int score = (int)dataReader["Score"];
+                    DateTime lastUpdate = (DateTime)dataReader["LastUpdate"];
 
                     Console.WriteLine(string.Format("id : {0} / class : {1} / score : {2} / lastUpdate : {3}",
                                 id, clas, score, lastUpdate.ToShortDateString()));
