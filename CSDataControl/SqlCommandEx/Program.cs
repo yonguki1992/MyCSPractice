@@ -116,8 +116,10 @@ namespace SqlCommandEx
         private static void Insert(SqlConnection conn, ScoresVO vo)
         {
             log.Debug("Insert 호출 vo="+vo.ToString());
-            SqlCommand cmd = new SqlCommand(null, conn);
-            cmd.CommandText = INSERT;
+            SqlCommand cmd = new SqlCommand(null, conn)
+            {
+                CommandText = INSERT
+            };
 
             //===========================================================================
             SqlParameter classParam = new SqlParameter("@class", SqlDbType.NVarChar, vo.Class.Length)
@@ -145,10 +147,12 @@ namespace SqlCommandEx
         private static void SelectById(SqlConnection conn, int id)
         {
             //TSQL  문장과 Connection 객체를 지정
-            SqlCommand cmd = new SqlCommand(null, conn);
-
             //===========================================================================
-            cmd.CommandText = SELECT_BY_ID;
+            SqlCommand cmd = new SqlCommand(null, conn)
+            {
+
+                CommandText = SELECT_BY_ID
+            };
             // 내용 채우기
             SqlParameter idParameter = new SqlParameter("@id", SqlDbType.Int)
             {
